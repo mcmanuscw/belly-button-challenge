@@ -113,59 +113,79 @@ function charts(name){
         };
         // Use Plotly to plot the data with the layout. 
         Plotly.newPlot("bar", barData, layout)
-    });
-
-    //Bubble Chart
-    d3.json(url).then((data)=>){
-        
-        let metadata_list = data.metadata
-
-        var result = metadata_list.filter(word => word.id == name);
-        var first_result = result[0] // sets up first element as the default
-
-        let samples_list = data.samples
-
-        var samples_result = samples_list.filter(word => word.id == name);
-        var samples_first_result = samples_result[0] // sets up first element as the default
-
-        var otu_ids = samples_first_result.otu_ids;
-        var otu_labels = samples_first_result.otu_labels;
-        var sample_values = samples_first_result.sample_values;
-      
-        var xticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
-        
+    
+    
+        //Bubble Chart
         // Create the trace for the bar chart. 
         var bubbleData = [
             {
-              y: sample_value,
-              x: xticks,
+              y: sample_values,
+              x: otu_ids,
               text: otu_labels,
-              mode: 'markers'
-              type: otu_labels
+              mode: 'markers',
+              type: otu_labels,
               marker:   {
                 size: sample_values,
                 color: otu_ids,
                 colorscale: 'sunsetdark'
-
-
               }
             }
           ];
 
-          var layout = {
-            title: "<b>Bacterial Observations per Sample"<b>"
-          }
+
+          var bubLayout = {
+                    title: "<b>Bacterial Observations per Sample<b>",
+                    margin: { t:0},
+                    hovermode: "closest",
+                    xaxis: {title: "OTU IDs"},
+                    yaxis: {title: "Bacteria"},
+                    margin: { t:0}
+                  };
+        
+                  Plotly.newPlot('bubble', bubbleData, bubLayout); 
 
 
-    }
+        
+        
+        //Guage Chart
+        // Create the trace for the guage chart. 
 
+        
+        //Unable to convert guage basic example to plotly.newplot format
+        //https://plotly.com/python/gauge-charts/#basic-gauge
+
+        var guageData = [
+            {
+              domain: {
+                        x:otu_ids,
+                        y:sample_values
+                    },
+              value: 0,
+              title: "<b>Bacterial Guage<b>",
+              type: "indicator",
+              mode: "guage+number"
+              
+            }
+          ];
+
+
+         var guageLayout = {
+                    
+                    width: 100,
+                    height: 100,
+                    margin: { t:0, b:0}
+                  };
+        
+          Plotly.newPlot('guage', guageData, guageLayout); 
+    
+       
+    
+    });
+
+    
+    
 
 
 }
-
-
-
-
-//app.js
 
 
