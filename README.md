@@ -1,6 +1,6 @@
-Instructions for assignment below;
+I used d3 to extract json data and build visualizations to look at belly button bio-diversity by sample.
 
-
+Each sample contained observational data for microbial bactia found within this often ignored anatomical geography.
 
 
 
