@@ -2,6 +2,11 @@ I used d3 to extract json data and build visualizations to look at belly button 
 
 Each sample contained observational data for microbial bactia found within this often ignored anatomical geography.
 
+I was able to develop code for the guage meter using the plotly documentation site (https://plotly.com/javascript/gauge-charts/) but alas I was not able to get it to render properly on my index.html file.
+
+Kind Regards,
+Chuck
+
 
 
 ------
