@@ -84,6 +84,7 @@ function charts(name){
 
         var result = metadata_list.filter(word => word.id == name);
         var first_result = result[0] // sets up first element as the default
+        
 
         let samples_list = data.samples
 
@@ -93,6 +94,7 @@ function charts(name){
         var otu_ids = samples_first_result.otu_ids;
         var otu_labels = samples_first_result.otu_labels;
         var sample_values = samples_first_result.sample_values;
+        var wash_freq = samples_first_result.wfreq;
       
         var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
         
@@ -138,7 +140,7 @@ function charts(name){
                     margin: { t:0},
                     hovermode: "closest",
                     xaxis: {title: "OTU IDs"},
-                    yaxis: {title: "Bacteria"},
+                    yaxis: {title: "# Subject Bacteria"},
                     margin: { t:0}
                   };
         
@@ -158,10 +160,10 @@ function charts(name){
             {
               domain: {
                         x:otu_ids,
-                        y:sample_values
+                        y:wash_freq
                     },
               value: 0,
-              title: "<b>Bacterial Guage<b>",
+              title: "<b>Belly Button Washing Fequency<b>",
               type: "indicator",
               mode: "guage+number"
               
@@ -176,7 +178,7 @@ function charts(name){
                     margin: { t:0, b:0}
                   };
         
-          Plotly.newPlot('guage', guageData, guageLayout); 
+          Plotly.newPlot("indicator", guageData, guageLayout); 
     
        
     
