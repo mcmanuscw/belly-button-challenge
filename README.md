@@ -4,6 +4,8 @@ Each sample contained observational data for microbial bactia found within this 
 
 I was able to develop code for the guage meter using the plotly documentation site (https://plotly.com/javascript/gauge-charts/) but alas I was not able to get it to render properly on my index.html file.
 
+My index.html file can be found in the StarterCode directory and the JS code within the static/js directories.
+
 Kind Regards,
 Chuck
 
